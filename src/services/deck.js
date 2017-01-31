@@ -35,7 +35,5 @@ export const getNewShuffledDeck = () => (
   shuffle(getNewOrderedDeck())
 );
 
-export const removeNTopCards = (deck, n) => {
-  return [...deck.slice(n)];
-}
+export const removeNTopCards = (deck, n) => ([...deck.slice(n)]);
 

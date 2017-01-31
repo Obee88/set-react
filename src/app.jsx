@@ -3,7 +3,7 @@ import SetGame from './components/setGame.jsx';
 
 const App = () => (
   <div>
-    <SetGame /> 
+    <SetGame />
   </div>
 );
 
