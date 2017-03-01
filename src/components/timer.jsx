@@ -10,11 +10,11 @@ class Timer extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(this.thick.bind(this), 1000);
+    setTimeout(this.thick.bind(this), 100);
   }
 
   componentDidUpdate() {
-    setTimeout(this.thick.bind(this), 1000);
+    setTimeout(this.thick.bind(this), 100);
   }
 
   thick() {
@@ -36,7 +36,7 @@ class Timer extends React.Component {
     }
     return (
       <span>
-          {`${t.h}:${t.mm}:${t.ss}`}
+          {`${t.h}:${t.mm}:${t.ss}.${t.t}`}
       </span>
     );
   }
