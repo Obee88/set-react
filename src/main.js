@@ -11,10 +11,14 @@ import gameReducer from './state/game/reducer';
 import cardsReducer from './state/cards/reducer';
 import { createStore, combineReducers } from 'redux';
 
-const store = createStore(combineReducers({
-  cards: cardsReducer,
-  game: gameReducer,
-}));
+const store = createStore(
+  combineReducers({
+    cards: cardsReducer,
+    game: gameReducer,
+  }),
+  // eslint-disable-next-line no-underscore-dangle
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 import { Provider } from 'react-redux';
 const render = () => {

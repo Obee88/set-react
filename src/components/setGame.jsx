@@ -1,11 +1,23 @@
 import React, { PropTypes } from 'react';
 import Table from './table.jsx';
+import Indicator from './indicator.jsx';
+import HintPanel from './hintPanel.jsx';
+import InfoPanel from './infoPanel.jsx';
 import { connect } from 'react-redux';
 
 const SetGame = ({ game, startGame }) => (
   <div>
     {
-      game.active ? (<Table />) : (
+      game.active ? (
+        <div>
+          <Table />
+          <Indicator />
+          <div style={{ float: 'left' }} >
+            <InfoPanel />
+            <HintPanel />
+          </div>
+        </div>
+      ) : (
         <button onClick={startGame}>Start game</button>
       )
     }

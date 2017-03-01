@@ -4,8 +4,8 @@
   max-width: 700px;
   max-height: 900px;
   display: table;
+  float: left;
 }
-
 
 .row {
   width: 100%;
@@ -34,4 +34,25 @@
   border-style: solid;
   border-radius: 10px;
   border-width: 5px;
+}
+
+.indicator {
+  float: left;
+  width: 200px;
+  height: 200px;
+}
+
+.hintPanel {
+  float: left;
+}
+
+.hintCardsWraper {
+  display: table; 
+}
+
+.hintCard {
+  float: left;
+  margin-right: 15px;
+  max-width: 60px;
+  max-height: 100px;
 }

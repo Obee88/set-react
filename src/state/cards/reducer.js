@@ -1,10 +1,12 @@
 import { getNewShuffledDeck, removeNTopCards } from '../../services/deck';
-import { getEmptyTable, isSet, removeCardsFromTable, makeTableReady, countCardsOnTable } from '../../services/table';
+import { tableToArray, findSetAsArray, getEmptyTable, isSet, removeCardsFromTable, makeTableReady, countCardsOnTable } from '../../services/table';
 
 const initialState = {
   table: getEmptyTable(),
   selectedCards: [],
   deck: getNewShuffledDeck(),
+  indicatorValue: null,
+  solution: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -28,7 +30,7 @@ const reducer = (state = initialState, action) => {
           // Set possibility
           if (!isSet(newSelectedCards)) {
             newSelectedCards = [];
-            return Object.assign({}, state, { selectedCards: newSelectedCards });
+            return Object.assign({}, state, { selectedCards: newSelectedCards, indicatorValue: false });
           }
 
           // Set discovered
@@ -36,7 +38,7 @@ const reducer = (state = initialState, action) => {
           const readyTable = makeTableReady(tableAfterSetRemoved, deck);
           const readyDeck = removeNTopCards(deck, countCardsOnTable(readyTable) - countCardsOnTable(tableAfterSetRemoved));
           newSelectedCards = [];
-          return Object.assign({}, state, { table: readyTable, deck: readyDeck, selectedCards: newSelectedCards });
+          return Object.assign({}, state, { table: readyTable, deck: readyDeck, selectedCards: newSelectedCards, indicatorValue: true, solution: [] });
         }
         return Object.assign({}, state, { selectedCards: newSelectedCards });
       }
@@ -47,6 +49,16 @@ const reducer = (state = initialState, action) => {
       const index = selectedCards.indexOf(action.data);
       const newSelectedCards = [...selectedCards.slice(0, index), ...selectedCards.slice(index + 1)];
       return Object.assign({}, state, { selectedCards: newSelectedCards });
+    }
+
+    case 'requestHint': {
+      const tableAsArray = tableToArray(state.table);
+      const set = findSetAsArray(tableAsArray);
+      return Object.assign({}, state, { solution: set });
+    }
+
+    case 'clearIndicatorValue': {
+      return Object.assign({}, state, { indicatorValue: null });
     }
 
     default:

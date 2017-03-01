@@ -36,4 +36,3 @@ export const getNewShuffledDeck = () => (
 );
 
 export const removeNTopCards = (deck, n) => ([...deck.slice(n)]);
-

@@ -4,7 +4,7 @@ import Row from './row.jsx';
 import { connect } from 'react-redux';
 
 const Table = ({ table }) => (
-  <div className={tableStyle} >
+  <div className={`${tableStyle} well`} >
     {
       Object.keys(table).map(
         (key) => (

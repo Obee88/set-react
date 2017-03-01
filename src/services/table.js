@@ -22,24 +22,27 @@ export const isSet = (cards) => {
   return true;
 };
 
-const hasAnySetAsArray = (tableAsArray) => {
+export const findSetAsArray = (tableAsArray) => {
   for (let i = 0; i < tableAsArray.length; i++) {
     for (let j = i + 1; j < tableAsArray.length; j++) {
       for (let k = j + 1; k < tableAsArray.length; k++) {
-        if (isSet([tableAsArray[i], tableAsArray[j], tableAsArray[k]])) {
-          return true;
+        const set = [tableAsArray[i], tableAsArray[j], tableAsArray[k]];
+        if (isSet(set)) {
+          return set;
         }
       }
     }
   }
-  return false;
+  return null;
 };
+
+const hasAnySetAsArray = (tableAsArray) => (findSetAsArray(tableAsArray) !== null);
 
 export const isTableAsArrayReady = (tableAsArray) => (
   (tableAsArray.length >= ROW_SIZE * ROWS_NUM) && hasAnySetAsArray(tableAsArray)
 );
 
-const tableToArray = (table) => {
+export const tableToArray = (table) => {
   const arr = [];
   for (let i = 1; i <= 3; ++i) {
     const rowName = `row${i}`;
@@ -100,3 +103,15 @@ export const removeCardsFromTable = (table, cards) => {
   }
   return newTable;
 };
+
+export const explainSolution = (solutionAsArray) => {
+  const explanationObject = {};
+  ['shape', 'color', 'fill', 'number'].map(
+    (key, i) => {
+      explanationObject[key] = solutionAsArray[0].charAt(i) === solutionAsArray[1].charAt(i) ? 'the same' : 'different';
+      return true;
+    }
+  );
+  return explanationObject;
+};
+
