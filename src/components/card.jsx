@@ -29,10 +29,10 @@ Card.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  selectedCards: state.cards.selectedCards,
+  selectedCards: state.selectedCards,
 });
 
-import { selectDeselectCard as selectDeselectCardAction } from '../state/cards/actions';
+import { selectDeselectCard as selectDeselectCardAction } from '../state/actions';
 const mapDispatchToProps = (dispatch) => ({
   selectDeselectCard(card) {
     dispatch(selectDeselectCardAction(card));

@@ -7,15 +7,11 @@ import ReactDOM from 'react-dom';
 
 import App from './app';
 
-import gameReducer from './state/game/reducer';
-import cardsReducer from './state/cards/reducer';
-import { createStore, combineReducers } from 'redux';
+import gameReducer from './state/reducer';
+import { createStore } from 'redux';
 
 const store = createStore(
-  combineReducers({
-    cards: cardsReducer,
-    game: gameReducer,
-  }),
+  gameReducer,
   // eslint-disable-next-line no-underscore-dangle
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );

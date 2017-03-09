@@ -2,17 +2,17 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import HintCard from './hintCard.jsx';
 import { hintPanel as hintPanelStyle, hintCardsWraper as hintCardsWraperStyle } from './styles.css';
-import { requestHint } from '../state/cards/actions';
+import { requestHint } from '../state/actions';
 import { explainSolution } from '../services/table';
 import HintExplanationPanel from './hintExplanationPanel.jsx';
 
-const HintPanel = ({ hintButtonClicked, solution }) => (
+const HintPanel = ({ hintButtonClicked, solution, hintVisible }) => (
   <div className={hintPanelStyle}>
     {
-      solution.length === 0 && <button onClick={hintButtonClicked}>Give me hint</button>
+      !hintVisible && <button onClick={hintButtonClicked}>Give me hint</button>
     }
     {
-      solution.length > 0 && (
+      hintVisible && (
         <div className={`${hintCardsWraperStyle} well`}>
           {
             solution.map(
@@ -30,10 +30,12 @@ const HintPanel = ({ hintButtonClicked, solution }) => (
 HintPanel.propTypes = {
   solution: PropTypes.array,
   hintButtonClicked: PropTypes.func,
+  hintVisible: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({
-  solution: state.cards.solution,
+  solution: state.solution,
+  hintVisible: state.hintVisible,
 });
 
 const mapDispatchToProps = (dispatch) => ({

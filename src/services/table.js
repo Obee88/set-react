@@ -1,10 +1,11 @@
 export const ROWS_NUM = 3;
-export const ROW_SIZE = 4;
+export const MIN_ROW_SIZE = 4;
+const MAX_ROW_SIZE = 6;
 
 export const getEmptyTable = () => ({
-  row1: { 1: null, 2: null, 3: null, 4: null, 5: null },
-  row2: { 1: null, 2: null, 3: null, 4: null, 5: null },
-  row3: { 1: null, 2: null, 3: null, 4: null, 5: null },
+  row1: { 1: null, 2: null, 3: null, 4: null, 5: null, 6: null },
+  row2: { 1: null, 2: null, 3: null, 4: null, 5: null, 6: null },
+  row3: { 1: null, 2: null, 3: null, 4: null, 5: null, 6: null },
 });
 
 export const isSet = (cards) => {
@@ -39,14 +40,14 @@ export const findSetAsArray = (tableAsArray) => {
 const hasAnySetAsArray = (tableAsArray) => (findSetAsArray(tableAsArray) !== null);
 
 export const isTableAsArrayReady = (tableAsArray) => (
-  (tableAsArray.length >= ROW_SIZE * ROWS_NUM) && hasAnySetAsArray(tableAsArray)
+  (tableAsArray.length >= MIN_ROW_SIZE * ROWS_NUM) && hasAnySetAsArray(tableAsArray)
 );
 
 export const tableToArray = (table) => {
   const arr = [];
-  for (let i = 1; i <= 3; ++i) {
+  for (let i = 1; i <= ROWS_NUM; ++i) {
     const rowName = `row${i}`;
-    for (let rowPosition = 1; rowPosition <= 5; ++rowPosition) {
+    for (let rowPosition = 1; rowPosition <= MAX_ROW_SIZE; ++rowPosition) {
       if (table[rowName][rowPosition]) {
         arr.push(table[rowName][rowPosition]);
       }
@@ -62,8 +63,8 @@ export const countCardsOnTable = (table) => (tableToArray(table).length);
 export const addCardToTable = (table, card) => {
   let added = false;
   const newTable = getEmptyTable();
-  for (let rowPosition = 1; rowPosition <= 5; rowPosition++) {
-    for (let rowNum = 1; rowNum <= 3; rowNum++) {
+  for (let rowPosition = 1; rowPosition <= MAX_ROW_SIZE; rowPosition++) {
+    for (let rowNum = 1; rowNum <= ROWS_NUM; rowNum++) {
       const rowName = `row${rowNum}`;
       if (!added && !table[rowName][rowPosition]) {
         newTable[rowName][rowPosition] = card;
@@ -91,8 +92,8 @@ export const makeTableReady = (table, deck) => {
 
 export const removeCardsFromTable = (table, cards) => {
   const newTable = getEmptyTable();
-  for (let rowPosition = 1; rowPosition <= 5; rowPosition++) {
-    for (let rowNum = 1; rowNum <= 3; rowNum++) {
+  for (let rowPosition = 1; rowPosition <= MAX_ROW_SIZE; rowPosition++) {
+    for (let rowNum = 1; rowNum <= ROWS_NUM; rowNum++) {
       const rowName = `row${rowNum}`;
       if (cards.indexOf(table[rowName][rowPosition]) < 0) {
         newTable[rowName][rowPosition] = table[rowName][rowPosition];

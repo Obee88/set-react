@@ -7,8 +7,8 @@ const Table = ({ table }) => (
   <div className={`${tableStyle} well`} >
     {
       Object.keys(table).map(
-        (key) => (
-          <Row row={table[key]} key={key} tableWidth={700} tableHeight={900} />
+        (key, index) => (
+          <Row row={table[key]} rowIndex={`${index}`} key={key} tableWidth={700} tableHeight={900} />
         )
       )
     }
@@ -20,7 +20,7 @@ Table.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  table: state.cards.table,
+  table: state.table,
 });
 
 

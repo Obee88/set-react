@@ -2,7 +2,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { indicator as indicatorStyle } from './styles.css';
-import { clearIndicatorValue } from '../state/cards/actions';
+import { clearIndicatorValue } from '../state/actions';
 
 const Indicator = ({ indicatorValue, hideIndicator }) => (
   <div className={indicatorStyle} >
@@ -40,7 +40,7 @@ Indicator.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  indicatorValue: state.cards.indicatorValue,
+  indicatorValue: state.indicatorValue,
 });
 
 const mapDispatchToProps = (dispatch) => ({

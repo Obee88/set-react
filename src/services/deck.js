@@ -36,3 +36,7 @@ export const getNewShuffledDeck = () => (
 );
 
 export const removeNTopCards = (deck, n) => ([...deck.slice(n)]);
+
+export const removeGreenFromDeck = (deck) => (deck.filter(
+  (element) => (element.charAt(1) !== 'G' && element.charAt(0) === 'C')
+));

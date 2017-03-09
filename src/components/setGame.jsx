@@ -3,7 +3,9 @@ import Table from './table.jsx';
 import Indicator from './indicator.jsx';
 import HintPanel from './hintPanel.jsx';
 import InfoPanel from './infoPanel.jsx';
+// import HackActions from './hackActions.jsx';
 import { connect } from 'react-redux';
+
 
 const SetGame = ({ game, startGame }) => (
   <div>
@@ -15,6 +17,7 @@ const SetGame = ({ game, startGame }) => (
           <div style={{ float: 'left' }} >
             <InfoPanel />
             <HintPanel />
+            {/* <HackActions /> */}
           </div>
         </div>
       ) : (
@@ -30,14 +33,12 @@ SetGame.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  game: state.game,
+  game: state,
 });
 
-import { fillTable as fillTableAction } from '../state/cards/actions';
-import { startGame as startGameAction } from '../state/game/actions';
+import { startGame as startGameAction } from '../state/actions';
 const mapDispatchToProps = (dispatch) => ({
   startGame() {
-    dispatch(fillTableAction());
     dispatch(startGameAction());
   },
 });
