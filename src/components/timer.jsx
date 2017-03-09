@@ -1,5 +1,8 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
+import TimeDisplay from './timeDisplay.jsx';
+
+let interval = null;
 
 class Timer extends React.Component {
   constructor(props) {
@@ -10,35 +13,24 @@ class Timer extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(this.thick.bind(this), 100);
+    interval = setInterval(this.thick.bind(this), 100);
   }
 
-  componentDidUpdate() {
-    setTimeout(this.thick.bind(this), 100);
+  componentWillUnmount() {
+    if (interval) {
+      clearInterval(interval);
+      interval = null;
+    }
   }
 
   thick() {
-    this.setState({ currentTime: new Date().getTime() });
+    if (interval) {
+      this.setState({ currentTime: new Date().getTime() });
+    }
   }
 
   render() {
-    const milis = this.state.currentTime - this.props.startTime;
-    const t = {};
-    t.h = Math.floor(milis / 3600000);
-    t.mm = Math.floor((milis % 3600000) / 60000);
-    t.ss = Math.floor((milis % 60000) / 1000);
-    t.t = Math.floor((milis % 1000) / 100);
-    if (Math.floor(t.mm / 10) === 0) {
-      t.mm = `0${t.mm}`;
-    }
-    if (Math.floor(t.ss / 10) === 0) {
-      t.ss = `0${t.ss}`;
-    }
-    return (
-      <span>
-          {`${t.h}:${t.mm}:${t.ss}.${t.t}`}
-      </span>
-    );
+    return <TimeDisplay timeInMillis={this.state.currentTime - this.props.startTime} />;
   }
 }
 
@@ -47,7 +39,7 @@ Timer.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  startTime: state.game.startTime,
+  startTime: state.startTime,
 });
 
 export default connect(
