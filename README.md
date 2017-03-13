@@ -17,3 +17,5 @@ npm install
 npm run develop
 ```
 
+Created by Davor Obilinovic
+Licence: MIT
