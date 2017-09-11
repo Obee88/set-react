@@ -7,7 +7,7 @@ const HintCard = ({ cardId }) => (
       style={{ width: '100%' }}
       alt={cardId}
       key={cardId}
-      src={`http://185.53.129.19/cards/${cardId}.png`}
+      src={`http://62.75.160.163/cards/${cardId}.png`}
     />
   </div>
 );
