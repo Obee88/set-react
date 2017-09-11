@@ -12,7 +12,7 @@ const Card = ({ card, selectedCards, selectDeselectCard, tableWidth, tableHeight
       {card ? <img
         className={imgClassName}
         alt="card"
-        src={`http://185.53.129.19/cards/${card}.png`}
+        src={`http://62.75.160.163//cards/${card}.png`}
         onClick={() => (selectDeselectCard(card))}
         style={{ maxWidth: tableWidth / 5, maxHeight: tableHeight / 3 }}
       /> : ''}
