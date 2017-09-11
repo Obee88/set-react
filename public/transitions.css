@@ -1,0 +1,17 @@
+.indicator-enter {
+  opacity: 0.01;
+}
+
+.indicator-enter.indicator-enter-active {
+  opacity: 1;
+  /*transition: opacity 500ms ease-in;*/
+}
+
+.indicator-leave {
+  opacity: 1;
+}
+
+.indicator-leave.indicator-leave-active {
+  opacity: 0.01;
+  transition: opacity 800ms ease-out;
+}
