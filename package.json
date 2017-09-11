@@ -4,7 +4,7 @@
   "description": "react starter",
   "scripts": {
     "develop": "webpack-dev-server --hot --inline --port 3322 --content-base build/app --config bundlerConfig.js",
-    "build": "NODE_ENV=production webpack --config bundlerConfig.js",
+    "build": "NODE_ENV=production webpack --config bundlerConfig.js && cp public/* build/app/",
     "test": "nyc ava --fail-fast --verbose --require babel-register",
     "clean": "rm build/app/app.js",
     "eslint": "./node_modules/.bin/eslint src --ext .js,.jsx"
