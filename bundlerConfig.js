@@ -19,7 +19,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
  * For more information, see: http://webpack.github.io/docs/configuration.html
  */
 
-const { NODE_ENV } = process.env;
+const NODE_ENV = process.env.NODE_ENV;
 
 module.exports = {
   stats: {
