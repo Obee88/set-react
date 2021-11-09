@@ -2,6 +2,7 @@
   "name": "react-starter",
   "version": "0.0.1",
   "description": "react starter",
+  "homepage": "https://obee88.github.io/set-react/",
   "keywords": [
     "react"
   ],
@@ -26,6 +27,7 @@
     "@types/react-redux": "^7.1.20",
     "alertify.js": "^1.0.10",
     "classnames": "^2.2.5",
+    "gh-pages": "^2.0.1",
     "lodash": "^4.13.1",
     "moment": "^2.13.0",
     "react": "^16.4.0",

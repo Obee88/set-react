@@ -3,11 +3,10 @@
   height: 25vh;
   border-style: solid;
   border-radius: 10px;
-  border-width: 5px;
+  border-width: 0.4vh;
   border-color: #f5f5f5;
 }
 .card {
-  margin: 0.2vh;
   cursor: pointer;
 }
 .selected {
