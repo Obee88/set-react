@@ -1,0 +1,15 @@
+
+.hintPanel {
+  float: left;
+}
+
+.hintCardsWraper {
+  display: table; 
+}
+
+.hintCard {
+  float: left;
+  margin-right: 15px;
+  max-height: 12vh;
+  max-width: 6vh;
+}

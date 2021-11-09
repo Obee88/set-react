@@ -1,10 +1,14 @@
 import React from 'react';
-import SetGame from './components/setGame.jsx';
+import SetGame from './components/SetGame';
 
-const App = () => (
-  <div>
-    <SetGame />
-  </div>
-);
+const App = ({ location }) => {
+  const windowUrl = window.location.search;
+  const params = new URLSearchParams(windowUrl);
+  return (
+    <div>
+      <SetGame autoStart={!!params.get('autoStart')} />
+    </div>
+  );
+};
 
 export default App;

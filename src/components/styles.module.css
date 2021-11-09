@@ -1,0 +1,19 @@
+.table {
+  /* width: 100%;
+  height: 100vh;
+  max-width: 700px;
+  max-height: 900px; */
+  display: table;
+  float: left;
+  margin-right: 16px;
+}
+
+.indicator {
+  float: left;
+  width: 200px;
+  height: 200px;
+}
+
+.restartButton {
+  margin-top: 8px;
+}
